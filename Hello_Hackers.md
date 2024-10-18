@@ -2,8 +2,11 @@
 
 `hacker@dojo:~$` prompts to throw in a command
 >hacker is the *user*
+
 >dojo is *hostname* or *machinename*
+
 >~ means that the cwd is */home/hacker*
+
 >$ signifies that user does not have *administrative privileges*
 
 ## **Introduction to Commands**
