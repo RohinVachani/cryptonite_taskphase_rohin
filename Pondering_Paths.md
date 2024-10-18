@@ -14,21 +14,21 @@ The file `pwn` is a BASH script that executes the file `*/challenge/.pwn*`, whic
 
 ### **What Happens If `pwn` Is Executed Without Its Absolute Path?**
 
-If `pwn` is executed without its absolute path, another file named `pwn` located in `*/challenge/bin*` is executed. This path is included in the PATH variable, and the executed file contains a message instructing the user to run `pwn` using its absolute path.
+If `pwn` is executed without its absolute path, another file named `pwn` located in `/challenge/bin` is executed. This path is included in the PATH variable, and the executed file contains a message instructing the user to run `pwn` using its absolute path.
 
 ## **Program and Absolute Paths**
 
-To retrieve the flag, we must invoke the program `run` located in the `*/challenge*` directory by executing it with its absolute path: `/challenge/run`.
+To retrieve the flag, we must invoke the program `run` located in the `/challenge` directory by executing it with its absolute path: `/challenge/run`.
 
 ### **Analyzing Its Script**
 
-This file is also a BASH script that will display the flag when executed. It contains an `if` statement that is triggered if the command does not start with '/'. Therefore, executing the command as `./run` while in `*/challenge*` will not work.  
+This file is also a BASH script that will display the flag when executed. It contains an `if` statement that is triggered if the command does not start with '/'. Therefore, executing the command as `./run` while in `/challenge` will not work.  
 > **NOTE:** The command `run` is not stored in any directory that is part of the PATH variable.
 
 ## **Position Thyself**
 
 To retrieve the flag, we first attempt to execute the `run` program using either `/challenge/run` or `./run` (while in `/challenge`). This command outputs a directory and instructs us to change our current working directory (cwd) by *'cding'* into it.  
-Once we change our directory and execute `*/challenge/run*`, we obtain the flag.
+Once we change our directory and execute `/challenge/run`, we obtain the flag.
 
 ### **Analyzing the _run_ Program**
 
@@ -36,11 +36,13 @@ The BASH script contains a list of 'candidate' directories, from which one is ra
 
 ## **Position Elsewhere**
 
-To retrieve the flag, we need to invoke the program `run`, located in the `*/challenge*` directory, by executing it using its absolute path `/challenge/run`.
+To retrieve the flag, we first attempt to execute the `run` program using either `/challenge/run` or `./run` (while in `/challenge`). This command outputs a directory and instructs us to change our current working directory (cwd) by *'cding'* into it.  
+Once we change our directory and execute `/challenge/run`, we obtain the flag.
 
 ## **Position Yet Elsewhere**
 
-To retrieve the flag, we need to invoke the program `run`, located in the `*/challenge*` directory, by executing it using its absolute path `/challenge/run`.
+To retrieve the flag, we first attempt to execute the `run` program using either `/challenge/run` or `./run` (while in `/challenge`). This command outputs a directory and instructs us to change our current working directory (cwd) by *'cding'* into it.  
+Once we change our directory and execute `/challenge/run`, we obtain the flag.
 
 ## **Implicit Relative Paths, from /**
 
