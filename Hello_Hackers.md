@@ -35,4 +35,4 @@ The directory */challenge/bin* is included in the *PATH variable*. This allows u
 
 To obtain the flag, pass *hello hackers* as a command.
 
-Once again, upon examining both *hello* and *hackers* files in the */challenge/bin* directory, I discovered that they are both BASH scripts. Interestingly, they contain comments that describe possible incorrect commands that users may enter, such as *hello world* or *hello hackers!*
+Once again, upon examining both *hello* and *hackers* files in the */challenge/bin* directory, I discovered that they are both BASH scripts. Interestingly, they contain strings for some of the possible incorrect commands that users may enter, such as *hello world* or *hello hackers!*
