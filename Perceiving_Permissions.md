@@ -1,4 +1,4 @@
-#**Perceiving Permissions**
+# **Perceiving Permissions**
 `-rwx--x-wx uowner group`
 
 >This is the information about a file we get by executing the command `ls -l filename`
@@ -15,7 +15,7 @@ After the first bit, there are three bits each for user owner , group owner and 
 
 In the example at the top, 'uowner' is the user owner and 'group' is the group owner of that file.
 
-##**Changing File Ownership**
+##* *Changing File Ownership**
 The _'root'_ user has the admin privelages. Our aim is to get the permssions that the root user has.
 For this challenge we have to use that command `chown` to change the ownership of the file `/flag` from root to hacker so that we can `cat /flag` to retreive the flag. We execute `chown hacker /flag` and `cat /flag`.
 ##**Groups and Files**
