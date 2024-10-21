@@ -47,24 +47,24 @@ For this challenge, `echo COLLEGE > PWN` will create the file `PWN`. To redirect
 
 The syntax for grep: grep [PATTERN] file
 
--Run the program `/challenge/run` and redirect the stdout to `/tmp/data.txt`: `challenge/run > /tmp/data.txt`
--Using `grep` we search thorugh `/tmp/data.txt` for the pattern `"pwn.college"`: `grep "pwn.college" /tmp/data.txt` 
--flag
+- Run the program `/challenge/run` and redirect the stdout to `/tmp/data.txt`: `challenge/run > /tmp/data.txt`
+- Using `grep` we search thorugh `/tmp/data.txt` for the pattern `"pwn.college"`: `grep "pwn.college" /tmp/data.txt` 
+- flag
 
 ## **Grepping live output**
 
 _Pipe operator_ connects one data channel to another.
 The stdin of `grep` can be connected to stdout of another program or file by
 `file | grep [PATTERN]`
--Execute `/challenge/run | grep "pwn.college"`
--flag
+- Execute `/challenge/run | grep "pwn.college"`
+- flag
 
 ## **Grepping errors**
 By default `|` only directs stdout of another program.
 `>&` redirects FD N1 to FD N2 by `N1 >& N2`
 
--`/challenge/run 2>&1 | grep "pwn.college' `
--flag
+- `/challenge/run 2>&1 | grep "pwn.college' `
+- flag
 
 
 ## **Duplicatinge piped data with tee**
@@ -73,24 +73,24 @@ The `tee` command can be used to intercept the data flowing through the pipe and
 `command | tee [FILE1] [FILE2].. | COMMAND`
 The data will be copied to the files and to stdout.
 
--`/challenge/pwn | /challenge/college` displays an error message .
--Execute `/challenge/pwn | tee db | /challenge/college` and `cat bd` to find the secret argument
--secret argument to the `/challenge/pwn` program is `--secret hidg` 
--Execute  `/challenge/pwn --secret hidg | /challenge/college`
--flag
+- `/challenge/pwn | /challenge/college` displays an error message .
+- Execute `/challenge/pwn | tee db | /challenge/college` and `cat bd` to find the secret argument
+- secret argument to the `/challenge/pwn` program is `--secret hidg` 
+- Execute  `/challenge/pwn --secret hidg | /challenge/college`
+- flag
 
 >NOTE: in `proram1 | program2` the stdout to `program1` will be piped to stdin of `program2` , but not the stderr, stderr for both the programs will be displayed on the terminal.
 
 ## **Writing to multiple programs**
 For this challenge, we use `tee` command to intercept the stdout from `/challenge/hack` and copy it to two files. These files are not actual files, but the programs `/challenge/the` and `/challenge/planet` that are being interpreted as files by the concept of _Process Substitution_(`>()`)
--`/challenge/hack | tee >(/challenge/the) >(/challenge/planet)`
--flag
+- `/challenge/hack | tee >(/challenge/the) >(/challenge/planet)`
+- flag
 
 ## **Split-piping stderr and stdout**
 
 This challenge will be solved by piping the stdout of the program `/challenge/hack` to stdin of `/challenge/planet` and redirecting the stderr of `hack` to `/challenge/the` as a file.
--`/challenge/hack 2> >(/challenge/the) | /challenge/planet`
--flag
+- `/challenge/hack 2> >(/challenge/the) | /challenge/planet`
+- flag
 
 
 
