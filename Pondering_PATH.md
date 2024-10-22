@@ -1,6 +1,6 @@
 # **Pondering PATH**
 
-##**The PATH Variable**
+## **The PATH Variable**
 The PATH environment variable stores the directories in which the commands are stored. We dont need to specify the absolute or relative paths of commands and programs that are stored in these directories.
 
 - To stop the program `/challenge/run` from using the `rm` command, we need to edit the PATH variable.
