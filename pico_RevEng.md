@@ -126,8 +126,66 @@ password = "".join(buffer)
 print(password)
 
 ```
+### **vault-door-4**
 
+```
+	    106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 070 , 0146,
+            '4' , 'a' , '6' , 'c' , 'b' , 'f' , '3' , 'b' ,
+```
 
+This is just basic ASCII encoding.
+The first row is in decimal and can be converted to text
+The second row is in hexadecimal
+The third row is in octal
+
+The decoding can be done by:
+```
+list = [106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  , 0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f, 0o142, 0o131, 0o164, 0o63 , 0o163, 0o137, 0o70 , 0o146]
+string = ""
+
+for i in list:
+	string = string + chr(i)
+
+string = string + '4a6cbf3b'
+
+print(string)
+```
+### **vault-door-5**
+
+```
+        String urlEncoded = urlEncode(password.getBytes());
+        String base64Encoded = base64Encode(urlEncoded.getBytes());
+        String expected = "JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVm"
+                        + "JTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2"
+                        + "JTM0JTVmJTY1JTMzJTMxJTM1JTMyJTYyJTY2JTM0";
+        return base64Encoded.equals(expected)
+```
+
+The flag is URL encoded + base64 encoded in order. We can use cyberchef to decode the string `JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVmJTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2JTM0JTVmJTY1JTMzJTMxJTM1JTMyJTYyJTY2JTM0` and we will get the flag
+
+### **vault-door-6**
+```
+	    0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,
+            0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,
+            0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,
+            0xa , 0x6c, 0x61, 0x6d, 0x37, 0x6d, 0x6d, 0x6d,
+```
+We have to XOR these bytes with `0x55` and then convert to ASCII to get the flag.
+
+```
+bytes= [0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,0xa , 0x6c, 0x61, 0x6d, 0x37, 0x6d, 0x6d, 0x6d,]
+by=[]
+
+for i in bytes:
+	by=by+[i^0x55]
+	
+string = ''.join(chr(b) for b in by)
+
+print(string)
+```
+### **vault-door-7**
 
 
 
