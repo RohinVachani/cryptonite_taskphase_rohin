@@ -57,5 +57,18 @@ Upon viewing the source code for this website , we can find the script that is r
 </script>
 ```
 
-Piecing the fragments we obtain the flag!
+Piecing the fragments together we obtain the flag!
+
+## **Power Cookie**
+
+This challenge is related to website cookies. Website cookies are text file that are stored on user's device thorugh the web browser. They contain information about users for Authentication, Personalisation, Analytics and Advertising
+
+We are yet again provided with a website link. When we visit the site and click on the button `Continue as guest` , we are told that there are no guest services.
+Inspect the website and navigate to the `Cookies` tab.
+Theres is a cookie named `Admin` whose is set to 0. Change the value to 1 and refresh to obtain the flag.
+
+
+
+
+
 
