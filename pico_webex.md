@@ -9,6 +9,7 @@ Search engines like Google use automated scripts or programs to browse and index
 
 When we visit the website and append the url with `/robots.txt`, we see the following text:
 > User-agent: *
+
 > Disallow: /1bb4c.html
 
 The first component of the file `User-agent` specifies that this instruction is for all bots
