@@ -67,6 +67,49 @@ We are yet again provided with a website link. When we visit the site and click 
 Inspect the website and navigate to the `Cookies` tab.
 Theres is a cookie named `Admin` whose is set to 0. Change the value to 1 and refresh to obtain the flag.
 
+## **IntroToBurp**
+For this we have to intercept the communication using BurpSuite. We have fill in some random credentials and forward the request. Do the same for OTP and remove the line where we can see our entred OTP value. This will give us the flag.
+
+## **SQL Dierect**
+
+Like any databse this will have relations.
+I use `\d` to display the list of relations
+```
+        List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | flags | table | postgres
+(1 row)
+```
+
+Now all we have to do is `select * from flags;` which will return all the columns from the table.
+```
+ id | firstname | lastname  |                address                 
+----+-----------+-----------+----------------------------------------
+  1 | Luke      | Skywalker | picoCTF{L3arN_S0m3_5qL_t0d4Y_31fd14c0}
+  2 | Leia      | Organa    | Alderaan
+  3 | Han       | Solo      | Corellia
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
