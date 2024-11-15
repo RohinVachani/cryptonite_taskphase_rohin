@@ -187,6 +187,102 @@ print(string)
 ```
 ### **vault-door-7**
 
+## **asm series**
+
+### **asm1**
+
+```
+	<+0>:   push   ebp
+        <+1>:   mov    ebp,esp
+        <+3>:   cmp    DWORD PTR [ebp+0x8],0x3a2
+        <+10>:  jg     0x512 <asm1+37>
+        <+12>:  cmp    DWORD PTR [ebp+0x8],0x358
+        <+19>:  jne    0x50a <asm1+29>
+        <+21>:  mov    eax,DWORD PTR [ebp+0x8]
+        <+24>:  add    eax,0x12
+        <+27>:  jmp    0x529 <asm1+60>
+        <+29>:  mov    eax,DWORD PTR [ebp+0x8]
+        <+32>:  sub    eax,0x12
+        <+35>:  jmp    0x529 <asm1+60>
+        <+37>:  cmp    DWORD PTR [ebp+0x8],0x6fa
+        <+44>:  jne    0x523 <asm1+54>
+        <+46>:  mov    eax,DWORD PTR [ebp+0x8]
+        <+49>:  sub    eax,0x12
+        <+52>:  jmp    0x529 <asm1+60>
+        <+54>:  mov    eax,DWORD PTR [ebp+0x8]
+        <+57>:  add    eax,0x12
+        <+60>:  pop    ebp
+        <+61>:  ret  
+```
+- The first two lines sets up the stack fram for this function
+- The argument passed to this function is `0x6fa`, which will be stored in `DWORD PTR [ebp+0x8]`
+- `cmp` compares `0x6fa` with value `0x3a2`
+- We can use the `echo $((16#hexvalue))` command to convert the hex values in decimal for comparison.
+- `0x6fa` is greater so the next line `jg` will be executed as "jump if greater"
+- We are now on label 37. Which compares the value `0x6fa` with itself.
+- `jne` or "jump if not equal" will be ignored as it is equal.
+- The value `0x6fa` is move to the register `eax` and from it `0x12` is subtracted in the next line.
+- `jmp` is the unconditional jump statement and we are now on label 60, after which the the function returns.
+- Our flag is `0x6fa-0x12` = `0x6e8`
+
+### **asm2**
+```
+	<+0>:   push   ebp
+        <+1>:   mov    ebp,esp
+        <+3>:   sub    esp,0x10
+        <+6>:   mov    eax,DWORD PTR [ebp+0xc]
+        <+9>:   mov    DWORD PTR [ebp-0x4],eax
+        <+12>:  mov    eax,DWORD PTR [ebp+0x8]
+        <+15>:  mov    DWORD PTR [ebp-0x8],eax
+        <+18>:  jmp    0x50c <asm2+31>
+        <+20>:  add    DWORD PTR [ebp-0x4],0x1
+        <+24>:  add    DWORD PTR [ebp-0x8],0xd1
+        <+31>:  cmp    DWORD PTR [ebp-0x8],0x5fa1
+        <+38>:  jle    0x501 <asm2+20>
+        <+40>:  mov    eax,DWORD PTR [ebp-0x4]
+        <+43>:  leave  
+        <+44>:  ret
+```
+- The values `(0x4,0x2d)` are passed as argument to the function.
+- The first two lines set up the stack frame, and the third line explicitly creates 16bytes of memory for local variables that will be used in the fucntion.
+- The value `0x2d` is stored in `[ebp+0xc]` and `0x4` in `[ebp+0x8]`
+- In the next four lines the `eax` register is used to store these values in the local variable.
+- Now, value `0x2d` is stored in `[ebp-0x4]` and `0x4` in `[ebp-0x8]`
+- `jmp` statement , jump to label 31.
+- `cmp` is used to compare `0x4` with `0x5fa1` and `jle` jumps to label 20.
+- From this line, `add` statement adds `0x1` and `0xd1` to `[ebp-0x4]` and `[ebp-0x8]` respectively and this is a loop. Until the value stored in `[ebp-0x8]` equals or exceeds `0x5fa1` , `0x1` will be added to `0x2d` in every iteration.
+```
+a = 4
+b = 45
+
+while (a<=24481):
+	a=a+209
+	b=b+1
+print(b)
+```
+- The script prints 163 which is`0xa3` in hex and is our flag.
+
+### **asm3**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
